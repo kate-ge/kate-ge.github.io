@@ -1,0 +1,239 @@
+/* Inter, self-hosted (Regular 400, Semi Bold 600). Source: @fontsource/inter, OFL license. */
+@font-face { font-family: "Inter"; font-weight: 400; font-style: normal; font-display: swap;
+  src: url("../assets/fonts/inter-cyrillic-400-normal.woff2") format("woff2");
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+@font-face { font-family: "Inter"; font-weight: 400; font-style: normal; font-display: swap;
+  src: url("../assets/fonts/inter-latin-400-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Inter"; font-weight: 600; font-style: normal; font-display: swap;
+  src: url("../assets/fonts/inter-cyrillic-600-normal.woff2") format("woff2");
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+@font-face { font-family: "Inter"; font-weight: 600; font-style: normal; font-display: swap;
+  src: url("../assets/fonts/inter-latin-600-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+
+html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
+*, *::before, *::after { box-sizing: border-box; }
+h1, h2, h3, p, ul { margin: 0; padding: 0; }
+ul { list-style: none; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+
+/* Keyboard focus */
+:focus-visible { outline: 2px solid var(--color-text-primary); outline-offset: 2px; border-radius: 4px; }
+
+.skip-link { position: absolute; left: 20px; top: -64px; z-index: 10; padding: 12px 24px; border-radius: var(--radius-button);
+  background: var(--color-bg-button); color: var(--color-text-on-button); font: 400 16px/20px var(--font); }
+.skip-link:focus { top: 20px; }
+
+/* Layout: sidebar 404 + column 12 + projects */
+.layout { display: grid; grid-template-columns: 404px minmax(0, 1fr); gap: 12px; padding: 20px; align-items: start; }
+
+.panel { background: var(--color-bg-page); border-radius: var(--radius-panel); padding: var(--space-24); }
+
+.sidebar { position: sticky; top: 20px; height: calc(100vh - 40px); min-height: 520px;
+  display: grid; grid-template-rows: 1fr auto auto; gap: var(--space-4); }
+
+.profile { display: flex; flex-direction: column; justify-content: space-between; gap: var(--space-24); }
+.avatar { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; display: block; margin-bottom: var(--space-32); }
+.profile-name { font-weight: 400; }
+.profile-name .name { display: block; color: var(--color-text-primary); }
+.profile-name .subtitle { display: block; margin-top: var(--space-20); color: var(--color-text-secondary); white-space: pre-line; }
+.bio { color: var(--color-text-secondary); margin-bottom: var(--space-24); }
+
+
+.btn { font: 400 20px/24px var(--font); letter-spacing: -0.02em; display: inline-flex; align-items: center; justify-content: center; gap: var(--space-8); height: 48px; padding: 12px 24px;
+  border-radius: var(--radius-button); background: var(--color-bg-button); color: var(--color-text-on-button); }
+
+.links { display: flex; flex-direction: column; justify-content: space-between; gap: var(--space-24); min-height: 162px; }
+.links-row { display: flex; flex-wrap: nowrap; justify-content: space-between; gap: 12px; /* mockup gap is 33, but text is wider in browser than in Figma, space-between spreads it */ }
+.nav-link { color: var(--color-text-secondary); }
+.links .nav-link { font: 400 18px/22px var(--font); letter-spacing: -0.02em; } /* desktop links block: same style as the card description */
+.nav-link:hover { color: var(--color-text-primary); }
+.lang-btn { align-self: flex-start; }
+/* Bottom panel, Figma 169:4164: 404 x 73, controls 24 high sitting 20 above the bottom edge */
+.settings { display: flex; align-items: center; justify-content: space-between; min-height: 73px; padding: 0 var(--space-24); }
+.settings .nav-link { font: 400 18px/24px var(--font); letter-spacing: -0.02em; }
+.settings .lang-btn { align-self: center; } /* the general .lang-btn rule pins it to the top */
+.theme-switch { display: flex; gap: var(--space-12); }
+.theme-btn { display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; color: var(--color-text-secondary); }
+.theme-btn:hover, .theme-btn[aria-pressed="true"] { color: var(--color-text-primary); }
+.svg-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+/* Dark theme: the dark arrow in the SVG file is recoloured to the light text colour */
+:root[data-theme="dark"] .arrow { filter: url(#tint-light); }
+
+
+/* Projects. Figma 74:3322: padding 20, text top left (306 wide), bottom row 36 high with arrow and tags centered */
+.projects { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-4); }
+.projects:focus { outline: none; }
+.project-card { display: grid; grid-template-columns: auto 1fr; grid-template-rows: 1fr auto; grid-template-areas: "text text" "arrow tags";
+  align-items: center; min-height: 568px; padding: var(--space-20); background: var(--color-bg-page); border-radius: var(--radius-panel); }
+.card-text { grid-area: text; align-self: start; width: 306px; max-width: 100%; display: flex; flex-direction: column; gap: var(--space-4); }
+.card-text .t-title-20 { color: var(--color-text-primary); }
+.card-text .t-desc-20 { color: var(--color-text-primary); font: 400 18px/22px var(--font); letter-spacing: -0.02em; } /* same colour as the title, regular weight (user request). 18/22 on desktop and mobile; Figma mobile frame 75:3391 still shows 20/24 */
+.arrow-box { grid-area: arrow; display: flex; align-items: center; height: 36px; }
+.arrow-wrap { position: relative; display: block; width: 56.428px; height: 30.118px; }
+.arrow { position: absolute; inset: -0.5px; width: 57.43px; height: 31.12px; max-width: none; }
+.tags { grid-area: tags; min-width: 0; justify-self: end; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: var(--space-12); }
+.tag { padding: var(--space-8); border-radius: var(--radius-tag); color: var(--color-text-secondary); }
+/* Card with a cover: the card has the proportions of the image (1200 x 690) and the image fills it. Text keeps the light-theme
+   colours in both themes (the cover is light). */
+.project-card.has-cover { position: relative; overflow: hidden; isolation: isolate; min-height: 0; aspect-ratio: 1200 / 690;
+  --color-text-primary: #151617; --color-text-secondary: #7E8082; }
+.project-card.has-cover > :not(.card-cover) { position: relative; z-index: 1; }
+.project-card.has-cover .tag { color: #151617; }
+.card-cover { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; object-fit: cover; }
+/* Dark cover (A11Y case, 1200 x 660): light text and arrow in both themes */
+.project-card.has-cover.cover-dark { aspect-ratio: 1200 / 660; --color-text-primary: #F7FAFF; --color-text-secondary: #A9ABAE; }
+.project-card.has-cover.cover-dark .tag { color: #F7FAFF; }
+.project-card.has-cover.cover-dark .arrow, :root[data-theme="dark"] .project-card.has-cover.cover-dark .arrow { filter: url(#tint-light); }
+:root[data-theme="dark"] .project-card.has-cover .arrow { filter: none; }
+/* TEMPORARY, while the home page has only two projects: on desktop the projects column is at least as tall as the sticky
+   sidebar, so both columns end on the same line. The cover cards grow taller than their image ratio and the image is
+   cropped at the sides (object-fit: cover). Has no effect once the cards are taller than the sidebar. Remove with the third project. */
+@media (min-width: 860px) {
+  .projects-home { display: flex; flex-direction: column; min-height: max(520px, calc(100vh - 40px)); }
+  .projects-home > .project-card { flex: 1 0 auto; width: 100%; min-width: 0; } /* grows in height only; the width stays the column width */
+}
+.card-pair { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-4); }
+/* When the column is too narrow for two cards side by side (desktop layout, under 1100px), stack them */
+@media (min-width: 860px) and (max-width: 1099.98px) { .card-pair { grid-template-columns: minmax(0, 1fr); } }
+.card-pair .project-card { min-height: 490px; }
+
+/* Case page. Figma 67:2999 (desktop) and 75:3516 (mobile) */
+.case { display: flex; flex-direction: column; align-items: stretch; padding: var(--space-20); }
+.case-back { position: sticky; top: 20px; z-index: 6; display: block; width: auto; margin: -20px -20px 0; padding: 20px 20px 16px; background: var(--color-bg-page); border-radius: 0; }
+.case-back::after { content: ""; position: absolute; left: 0; right: 0; top: 0; height: var(--radius-panel); pointer-events: none;
+  background: radial-gradient(circle at 100% 100%, transparent calc(var(--radius-panel) - 0.5px), var(--color-bg-outer) var(--radius-panel)) left top / var(--radius-panel) var(--radius-panel) no-repeat,
+              radial-gradient(circle at 0 100%, transparent calc(var(--radius-panel) - 0.5px), var(--color-bg-outer) var(--radius-panel)) right top / var(--radius-panel) var(--radius-panel) no-repeat; } /* outer-colour corners so the stuck bar keeps the panel's rounded top */
+/* Prev / next project, Figma final 2: 169:4149 (next only), 169:4137 (both), 169:4172 (prev only).
+   Each link fills its part of the panel, so the whole area is clickable. Arrow and text sit on the bottom edge, 20 apart. */
+.case-nav { display: flex; min-height: 150px; padding: 0; }
+.case-nav-link { flex: 1 1 0; min-width: 0; display: flex; align-items: flex-end; gap: var(--space-20); padding: var(--space-20); border-radius: var(--radius-panel); }
+.case-nav-link.is-next { justify-content: flex-end; }
+.case-nav-link:focus-visible { outline-offset: -2px; }
+.case-nav-link.is-prev .arrow-wrap { transform: scaleX(-1); }
+.case-nav-link .arrow-wrap { flex-shrink: 0; margin-bottom: 0; }
+.case-nav-link:hover .next-label { color: var(--color-text-primary); }
+.next-text { display: flex; flex-direction: column; gap: var(--space-4); max-width: 306px; min-width: 0; }
+.next-label { color: var(--color-text-secondary); }
+.next-name { color: var(--color-text-primary); }
+.case-back::before { content: ""; position: absolute; left: 0; right: 0; top: -20px; height: 20px; background: var(--color-bg-outer); }
+.case-back .arrow-wrap { width: 56.428px; height: 30.118px; }
+.case-back .arrow-wrap { transform: scaleX(-1); }
+.case-head { display: flex; justify-content: space-between; align-items: flex-start; gap: var(--space-24); margin-top: 44px; }
+.case-intro { max-width: 619px; display: flex; flex-direction: column; gap: var(--space-4); }
+.case-intro .t-title-20 { color: var(--color-text-primary); }
+.case-intro .t-desc-20 { color: var(--color-text-secondary); }
+.case .tags { grid-area: auto; justify-self: auto; flex-shrink: 0; }
+.case-role { display: flex; gap: 12px; align-items: baseline; margin-top: 36px; }
+.case-label { font: 600 16px/18px var(--font); letter-spacing: -0.02em; color: var(--color-text-primary); }
+.case-text { font: 400 16px/20px var(--font); letter-spacing: -0.02em; color: var(--color-text-secondary); }
+.case-num { font-weight: 600; color: var(--color-text-primary); }
+.case-cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-4); margin-top: 56px; }
+.case-col { display: flex; flex-direction: column; gap: var(--space-4); }
+.case-copy { display: flex; flex-direction: column; gap: 0; }
+.case-copy > h3 { margin-bottom: var(--space-4); }
+.case-col .t-title-20, .case-copy .t-title-20 { color: var(--color-text-primary); }
+.case-media { height: 318px; border-radius: var(--radius-panel); background: var(--color-bg-outer); }
+.case-media-lg { height: 455px; margin-top: 36px; }
+.case-fig { margin: 20px 0 0; }
+.case-block.case-duo { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4); }
+.case-block.case-duo .case-copy { max-width: none; }
+.case-fig img, .case-video { display: block; width: 100%; height: auto; border-radius: var(--radius-panel); background: var(--color-bg-outer); }
+html[lang="ru"] .m-en, html[lang="en"] .m-ru { display: none; }
+.case-block { display: flex; flex-direction: column; gap: var(--space-20); margin-top: 40px; }
+.case-block .case-copy { max-width: 680px; }
+/* A11Y case: meta rows (role, mentors, team + timeline), part 2 heading, two images side by side */
+.case-meta { display: flex; flex-direction: column; gap: 36px; margin-top: 36px; }
+.case-meta .case-role { margin-top: 0; }
+.case-meta-row { display: flex; flex-wrap: wrap; column-gap: 84px; row-gap: 36px; }
+.case-h-sub { color: var(--color-text-secondary); }
+.case-sub { margin: var(--space-20) 0 var(--space-4); }
+.case-block-tight { margin-top: 24px; }
+.case-fig-duo { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4); }
+/* Mentor comment (Figma-style image) over the top right corner of a picture or video. Sizes are in % of the media width,
+   so the comment scales with it. Half of the comment sticks out above the media: the figure reserves that space on top. */
+.case-fig.has-comment { position: relative; --cw: 34.25%; --cr: 0.3382; padding-top: calc(var(--cw) * var(--cr) / 2); }
+.case-fig.c-tall { --cr: 0.4623; }
+.case-comment { position: absolute; top: 0; right: 2.25%; z-index: 1; width: var(--cw); height: auto; }
+.case-fig .case-comment { width: var(--cw); border-radius: 0; background: none; }
+
+.mobile-head { display: none; }
+.head-btn { display: none; }
+
+/* Tablet: 860 to 1099px. The sidebar gets about 22% narrower (404 -> 316) and its type and paddings follow the mobile sizes,
+   so the left block stays clearly narrower than the projects column. */
+@media (min-width: 860px) and (max-width: 1099.98px) {
+  .layout { grid-template-columns: 316px minmax(0, 1fr); }
+  .profile { padding: var(--space-20); }
+  .avatar { margin-bottom: var(--space-24); }
+  .profile-name .name, .profile-name .subtitle { font: 400 24px/24px var(--font); letter-spacing: -0.04em; }
+  .profile-name .subtitle { margin-top: var(--space-16); }
+  .bio { font: 400 16px/20px var(--font); letter-spacing: -0.02em; margin-bottom: var(--space-20); }
+  .btn { letter-spacing: -0.03em; }
+  .links { padding: var(--space-20); }
+  .settings { padding: 0 var(--space-20); }
+}
+
+/* Mobile: below 860px, where the sidebar and the projects column become about equal. Figma mobile frames 73:3268 and 75:3471 */
+@media (max-width: 859.98px) {
+  .layout { display: flex; flex-direction: column; align-items: stretch; gap: var(--space-4); }
+  .sidebar { display: contents; }
+  .layout { padding-top: 0; }
+  /* Sticky header. ::before paints the page colour behind it: 20px above, the 4px gap below, and below the gap two
+     inverse 24px corners, so the card scrolling under the header looks like a block with rounded top corners.
+     ::after is the rounded header card itself, drawn on top. */
+  .mobile-head { display: flex; align-items: center; justify-content: space-between; padding: var(--space-20); order: 0;
+    position: sticky; top: 20px; z-index: 5; margin-top: var(--space-20); background: transparent; }
+  .mobile-head::before { content: ""; position: absolute; z-index: -2; left: 0; right: 0; top: -20px; bottom: calc(-4px - var(--radius-panel)); pointer-events: none;
+    background:
+      radial-gradient(circle at 100% 100%, transparent calc(var(--radius-panel) - 0.5px), var(--color-bg-outer) var(--radius-panel)) left bottom / var(--radius-panel) var(--radius-panel) no-repeat,
+      radial-gradient(circle at 0 100%, transparent calc(var(--radius-panel) - 0.5px), var(--color-bg-outer) var(--radius-panel)) right bottom / var(--radius-panel) var(--radius-panel) no-repeat,
+      linear-gradient(var(--color-bg-outer), var(--color-bg-outer)) left top / 100% calc(100% - var(--radius-panel)) no-repeat; }
+  .mobile-head::after { content: ""; position: absolute; z-index: -1; inset: 0; border-radius: var(--radius-panel); background: var(--color-bg-page); pointer-events: none; }
+  .mobile-head { flex-wrap: wrap; row-gap: var(--space-24); }
+  .mobile-menu { flex-basis: 100%; display: flex; flex-direction: column; gap: var(--space-24); }
+  .mobile-menu[hidden] { display: none; }
+  .btn-small { font: 400 16px/20px var(--font); letter-spacing: -0.02em; height: auto; }
+  .mobile-head.is-scrolled .head-btn { display: inline-flex; }
+  .menu-btn { display: block; width: 32px; height: 32px; }
+  .menu-btn img { display: block; }
+  .profile { order: 1; padding: var(--space-20); min-height: 500px; }
+  .avatar { margin-bottom: var(--space-24); }
+  .profile-name .name, .profile-name .subtitle { font: 400 24px/24px var(--font); letter-spacing: -0.04em; }
+  .profile-name .subtitle { margin-top: var(--space-16); white-space: normal; } /* no forced line break on mobile, wraps only when the width requires it */
+  .bio { font: 400 16px/20px var(--font); letter-spacing: -0.02em; margin-bottom: var(--space-20); }
+  .btn { letter-spacing: -0.03em; }
+  .links { display: none; }
+  .projects { order: 2; }
+  .project-card { grid-template-columns: 1fr; grid-template-rows: auto 1fr auto; grid-template-areas: "text" "tags" "arrow"; align-items: start; min-height: 568px; }
+  .project-card.has-cover .card-text .t-desc-20 { display: none; } /* low cover on mobile: the description would sit on the image and be unreadable (user decision) */
+  .card-text { width: auto; }  .tags { justify-self: start; justify-content: flex-start; margin-top: 0; align-self: center; } /* tag sits in the middle between the title and the arrow */
+  .arrow-box { align-self: end; }
+  .page-case .profile { display: none; } /* Figma 75:3516 has no profile panel on the case page */
+  .case { order: 2; }
+  .case-nav { order: 3; flex-direction: column; } /* both links: stacked on mobile, prev on top */
+  .case-nav-link { flex: 1 0 auto; }
+  .case-nav-link.is-next { justify-content: space-between; }
+  .settings { display: none; } /* language and theme live in the mobile menu */
+  .case-head { margin-top: 0; }
+  .case-back { display: none; } /* no back arrow in Figma mobile frame 75:3516 */
+  .case .tags { display: none; } /* not shown in Figma mobile frame 75:3516 */
+  .case-role { flex-direction: column; gap: var(--space-8); margin-top: 40px; }
+  .case-cols { grid-template-columns: minmax(0, 1fr); gap: 32px; margin-top: 38px; }
+  .case-media, .case-media-lg { height: 243px; }
+  .case-media-lg { margin-top: 36px; }
+  .card-pair { grid-template-columns: 1fr; }
+  .card-pair .project-card { min-height: 568px; }
+  .case-block.case-duo { grid-template-columns: minmax(0, 1fr); gap: var(--space-20); }
+  .case-meta { gap: 24px; margin-top: 40px; }
+  .case-meta .case-role { margin-top: 0; }
+  .case-meta-row { flex-direction: column; row-gap: 24px; }
+  .case-fig-duo { grid-template-columns: minmax(0, 1fr); }
+  .case-fig.has-comment { --cw: 36%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}

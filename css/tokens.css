@@ -1,0 +1,47 @@
+/* Tokens from Figma file MJMuL77cNh9CYoejPdPXYG, page "UI Kit". Do not add colors without asking the user. */
+:root {
+  /* colors */
+  --color-bg-outer: #E2E4E8;      /* page background behind panels */
+  --color-bg-page: #F7FAFF;       /* panels and cards */
+  --color-bg-button: #2B2B2C;
+  --color-text-primary: #151617;
+  --color-text-secondary: #7E8082; /* AA PROBLEM: 3.79:1 on #F7FAFF. OK only for text 24px+. User may replace with a darker value. */
+  --color-text-on-button: #F7FAFF;
+  --color-border-default: #7E8082;
+  /* placeholder only (avatar circle, not in kit): #D5D6D9 */
+
+  /* spacing (px) */
+  --space-4: 4px; --space-8: 8px; --space-10: 10px; --space-12: 12px; --space-16: 16px;
+  --space-20: 20px; --space-24: 24px; --space-32: 32px;
+
+  /* radius */
+  --radius-panel: 24px; --radius-button: 24px; --radius-tag: 12px;
+
+  --font: "Inter", system-ui, sans-serif;
+}
+
+/* Text styles. Figma letter spacing in percent = em fraction. */
+body { margin: 0; font-family: var(--font); font-weight: 400; background: var(--color-bg-outer); color: var(--color-text-primary); }
+.t-heading-32 { font: 400 32px/32px var(--font); letter-spacing: -0.02em; }  /* desktop name and subtitle */
+.t-link-24    { font: 400 24px/24px var(--font); letter-spacing: -0.04em; }  /* links; mobile name and subtitle */
+.t-title-20   { font: 600 20px/24px var(--font); letter-spacing: -0.02em; }  /* project title; case section headings */
+.t-desc-20    { font: 400 20px/24px var(--font); letter-spacing: -0.02em; }  /* project description */
+.t-body-18    { font: 400 18px/22px var(--font); letter-spacing: -0.02em; }  /* desktop bio */
+.t-tag-16     { font: 400 16px/20px var(--font); letter-spacing: -0.02em; }  /* tags; mobile bio */
+.t-text-16    { font: 400 16px/18px var(--font); letter-spacing: -0.02em; }  /* case body text */
+.t-label-16   { font: 600 16px/18px var(--font); letter-spacing: -0.02em; }  /* "Моя роль" label; bold numbers in results */
+.t-button-20  { font: 400 20px/24px var(--font); letter-spacing: -0.03em; }  /* button */
+.t-button-16  { font: 400 16px/20px var(--font); letter-spacing: -0.02em; }  /* button in narrow mobile state (frame 75:3471) */
+.t-caption-12 { font: 400 12px/12px var(--font); letter-spacing: -0.02em; }  /* footer */
+
+/* Dark theme: the same palette, roles swapped. No new colors. Page background is the grey, panels are the darkest colour. */
+:root { color-scheme: light; }
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-bg-outer: #2B2B2C;
+  --color-bg-page: #151617;
+  --color-bg-button: #F7FAFF;
+  --color-text-primary: #F7FAFF;
+  --color-text-secondary: #7E8082;
+  --color-text-on-button: #151617;
+}
