@@ -35,6 +35,11 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   display: grid; grid-template-rows: 1fr auto auto; gap: var(--space-4); }
 
 .profile { display: flex; flex-direction: column; justify-content: space-between; gap: var(--space-24); }
+/* Case pages: the whole profile panel links to the home page; the button sits above the link */
+.profile { position: relative; }
+.profile-home { position: absolute; inset: 0; z-index: 1; border-radius: var(--radius-panel); }
+.profile-home:focus-visible { outline-offset: -2px; border-radius: var(--radius-panel); }
+.profile .btn { position: relative; z-index: 2; }
 .avatar { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; display: block; margin-bottom: var(--space-32); }
 .profile-name { font-weight: 400; }
 .profile-name .name { display: block; color: var(--color-text-primary); }
